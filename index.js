@@ -21,8 +21,8 @@ app.use(express.urlencoded({extended:true}));
     /**[ Register Route ]**/
     app.use('/api',router)
 
-    await connectDB()
-    app.use(errorHandler)   
+      connectDB();
+    // app.use(errorHandler)   
     app.listen(port, () => {
       console.log(`listening:*${port}`);
     });
