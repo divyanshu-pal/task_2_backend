@@ -8,7 +8,11 @@ import appMiddleware from './middleware/app.middleware.js';
 import router from './routes/order.routes.js';
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3001', // Allow requests from this origin
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
+  credentials: true, // Allow cookies to be sent with requests (optional)
+}));
 app.use(express.json());
 dotenv.config();
 app.use(express.urlencoded({extended:true}));
