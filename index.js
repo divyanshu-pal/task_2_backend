@@ -19,7 +19,7 @@ dotenv.config();
     /**[ Register Route ]**/
     app.use('/api',router)
 
-    await connectDB()
+    connectDB()
     app.use(errorHandler)   
     app.listen(port, () => {
       console.log(`listening:*${port}`);
