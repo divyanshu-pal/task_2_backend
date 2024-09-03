@@ -2,19 +2,20 @@ import express from 'express';
 
 
 import connectDB from './config/connectDB.js';
+import dotenv from 'dotenv'
 import cors from 'cors'
 /**[ Middlewares ]**/
 import errorHandler from './middleware/errorHandler.js';
 import appMiddleware from './middleware/app.middleware.js';
-import dotenv from 'dotenv'
-import router from './routes/order.routes.js';
-const main = async () => {
-    dotenv.config();
-    const port = process.env.PORT||4000;
 
-  try {
+import router from './routes/order.routes.js';
+dotenv.config();
+// const main = async () => {
+  const port = process.env.PORT||4000;
+
+  // try {
     const app = express();
-    appMiddleware(app)
+    appMiddleware(app);
     /**[ Register Route ]**/
     app.use('/api',router)
 
@@ -24,7 +25,7 @@ const main = async () => {
       console.log(`listening:*${port}`);
     });
 
-  } catch (e) {}
-};
+  // } catch (e) {}
+// };
 
-main().catch((e) => console.error(e));
+// main().catch((e) => console.error(e));
