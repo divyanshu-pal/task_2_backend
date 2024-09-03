@@ -6,10 +6,11 @@ import cors from 'cors'
 /**[ Middlewares ]**/
 import errorHandler from './middleware/errorHandler.js';
 import appMiddleware from './middleware/app.middleware.js';
-
+import dotenv from 'dotenv'
 import router from './routes/order.routes.js';
 const main = async () => {
-  const port = 3001;
+    dotenv.config();
+    const port = process.env.PORT||4000;
 
   try {
     const app = express();
@@ -19,7 +20,7 @@ const main = async () => {
 
     await connectDB()
     app.use(errorHandler)   
-    app.listen(process.env.PORT||3001, () => {
+    app.listen(port, () => {
       console.log(`listening:*${port}`);
     });
 
